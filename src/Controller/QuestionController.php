@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class QuestionController
+class QuestionController extends AbstractController
 {
     /**
      * @Route("/")
@@ -13,5 +14,27 @@ class QuestionController
     public function homepage() {
         //die('Start');
         return new Response('Start!');
+    }
+
+    /**
+     * @Route("/questions/{slug}")
+     */
+    public function show($slug) {
+
+        $answers = [
+            'Answer 1',
+            'Answer 2',
+            'Answer 3'
+        ];
+
+        return $this->render('question/show.html.twig', [
+            'question' => ucwords(str_replace('-', ' ', $slug)),
+            'answers' => $answers
+            ]);
+/*
+        return new Response(
+            sprintf('Show page: "%s"', ucwords(str_replace('-', ' ', $slug))
+        ));
+*/
     }
 }
