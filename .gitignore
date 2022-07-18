@@ -8,5 +8,7 @@
 /var/
 /vendor/
 /symfony.exe
+/tutorial/
+.idea/
 #
 ###< symfony/framework-bundle ###
